@@ -8,6 +8,9 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/accountService
 
+spring.se  security:
+
+
 jwt:
   secret: mySecret
   expiration: 604800

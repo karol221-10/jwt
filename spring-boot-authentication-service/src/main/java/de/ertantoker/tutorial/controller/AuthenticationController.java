@@ -25,7 +25,7 @@ public class AuthenticationController {
     }
 
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<String> handle(EntityNotFoundException ex) {
-        return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+    public ResponseEntity<String> handleEntityNotFoundException(EntityNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }
