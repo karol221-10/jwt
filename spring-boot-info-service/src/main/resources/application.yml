@@ -1,6 +1,10 @@
 server:
-  port: 8081
+  port: 8080
 
 spring:
   application:
     name: info-service
+
+jwt:
+  header: Authorization
+  secret: mySecret

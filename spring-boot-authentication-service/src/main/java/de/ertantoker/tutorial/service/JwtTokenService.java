@@ -1,6 +1,5 @@
 package de.ertantoker.tutorial.service;
 
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 @Component
 public class JwtTokenService {
@@ -23,16 +21,6 @@ public class JwtTokenService {
         this.expiration = expiration;
     }
 
-
-    private Claims getAllClaimsFromToken(String token) {
-        return Jwts.parser()
-                .setSigningKey(secret)
-                .parseClaimsJws(token)
-                .getBody();
-    }
-
-
-
     public String generateToken(String username) {
         final Date createdDate = new Date();
         final Date expirationDate = calculateExpirationDate(createdDate);
@@ -44,7 +32,6 @@ public class JwtTokenService {
                 .setExpiration(expirationDate)
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
-
     }
 
     private Date calculateExpirationDate(Date createdDate) {
