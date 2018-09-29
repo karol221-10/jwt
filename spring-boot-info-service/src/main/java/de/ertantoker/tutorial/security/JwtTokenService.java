@@ -2,15 +2,11 @@ package de.ertantoker.tutorial.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.function.Function;
 
 @Component
@@ -42,16 +38,12 @@ public class JwtTokenService {
                 .getBody();
     }
 
-    private Boolean isTokenExpired(String token) {
+    private Boolean isTokenNotExpired(String token) {
         final Date expiration = getExpirationDateFromToken(token);
-        return expiration.before(new Date());
+        return expiration.after(new Date());
     }
 
-    public boolean validateToken(String token, String username) {
-        return username.equals(username) && !isTokenExpired(token);
-    }
-
-    public boolean verify(String token) {
-        return validateToken(token, getUsernameFromToken(token));
+    public Optional<Boolean> validateToken(String token) {
+        return  isTokenNotExpired(token) ? Optional.of(Boolean.TRUE) : Optional.empty();
     }
 }
