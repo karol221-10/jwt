@@ -1,10 +1,9 @@
 package de.ertantoker.tutorial.controller;
 
 import de.ertantoker.tutorial.exception.EntityNotFoundException;
-import de.ertantoker.tutorial.response.JWTTokenResponse;
 import de.ertantoker.tutorial.request.AuthenticationRequest;
+import de.ertantoker.tutorial.response.JWTTokenResponse;
 import de.ertantoker.tutorial.service.AuthenticationService;
-import io.jsonwebtoken.SignatureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

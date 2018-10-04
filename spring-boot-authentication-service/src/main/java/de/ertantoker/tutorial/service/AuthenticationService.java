@@ -3,11 +3,8 @@ package de.ertantoker.tutorial.service;
 import de.ertantoker.tutorial.exception.EntityNotFoundException;
 import de.ertantoker.tutorial.repository.AccountRepository;
 import de.ertantoker.tutorial.response.JWTTokenResponse;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Objects;
 
 @Service
 public class AuthenticationService {
