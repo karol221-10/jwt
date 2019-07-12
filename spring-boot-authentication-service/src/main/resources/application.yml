@@ -2,11 +2,19 @@ server:
   port: 8888
 
 spring:
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
   application:
     name: authentication-service
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017/accountService
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
 
 spring.se  security:
 
@@ -14,3 +22,4 @@ spring.se  security:
 jwt:
   secret: mySecret
   expiration: 604800
+
